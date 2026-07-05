@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QueuePilot • Background Job Control Center</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <h1>QueuePilot</h1>
+          <p>Distributed background processing control center</p>
+        </div>
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span id="statusText">Live • Connecting…</span>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="card hero-copy">
+          <h2>Monitor workloads, launch queues, and keep every job moving.</h2>
+          <p>Built to feel like a premium operations dashboard for a modern background processing platform. Submit jobs, inspect queue health, and track retries and workers at a glance.</p>
+          <div class="actions">
+            <button id="refreshBtn" class="btn-primary">Refresh Metrics</button>
+            <button class="btn-secondary">View Analytics</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">
+            <h3>Create Queue</h3>
+            <a href="#">Advanced</a>
+          </div>
+          <form id="queueForm">
+            <div class="form-grid">
+              <label>Queue Name
+                <input name="queueName" placeholder="email_queue" required />
+              </label>
+              <label>Priority
+                <select name="priority">
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-grid">
+              <label>Concurrency
+                <input type="number" name="concurrency" value="5" min="1" />
+              </label>
+              <label>Retries
+                <input type="number" name="retries" value="3" min="0" />
+              </label>
+            </div>
+            <div class="form-grid">
+              <label>Backoff
+                <select name="backoff">
+                  <option value="exponential">Exponential</option>
+                  <option value="linear">Linear</option>
+                </select>
+              </label>
+              <label><input type="checkbox" name="paused" /> Paused</label>
+            </div>
+            <button class="btn-primary" type="submit">Create Queue</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="metric-grid">
+        <div class="metric">
+          <div class="label">Total jobs</div>
+          <div id="totalJobs" class="value">0</div>
+        </div>
+        <div class="metric">
+          <div class="label">Failed jobs</div>
+          <div id="failedJobs" class="value">0</div>
+        </div>
+        <div class="metric">
+          <div class="label">Running jobs</div>
+          <div id="runningJobs" class="value">0</div>
+        </div>
+        <div class="metric">
+          <div class="label">Workers online</div>
+          <div id="workers" class="value">0</div>
+        </div>
+      </section>
+
+      <section class="main-grid">
+        <div class="card">
+          <div class="section-title">
+            <h3>Queue Landscape</h3>
+            <a href="#">Manage</a>
+          </div>
+          <div id="queueList" class="queue-list"></div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">
+            <h3>Launch Job</h3>
+            <a href="#">Templates</a>
+          </div>
+          <form id="jobForm">
+            <label>Queue Name
+              <input name="queueName" placeholder="email_queue" required />
+            </label>
+            <div class="form-grid">
+              <label>To
+                <input name="to" placeholder="abc@gmail.com" />
+              </label>
+              <label>Subject
+                <input name="subject" placeholder="Welcome" />
+              </label>
+            </div>
+            <label>Body
+              <textarea name="body" placeholder="Hello user"></textarea>
+            </label>
+            <div class="form-grid">
+              <label>Job Type
+                <select name="jobType">
+                  <option value="immediate">Immediate</option>
+                  <option value="delayed">Delayed</option>
+                  <option value="scheduled">Scheduled</option>
+                  <option value="recurring">Recurring</option>
+                </select>
+              </label>
+              <label>Delay (seconds)
+                <input type="number" name="delay" value="0" min="0" />
+              </label>
+            </div>
+            <label>Scheduled For
+              <input type="datetime-local" name="scheduledFor" />
+            </label>
+            <label><input type="checkbox" name="recurring" /> Recurring job</label>
+            <button class="btn-primary" type="submit">Submit Job</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="main-grid" style="margin-top:20px;">
+        <div class="card">
+          <div class="section-title">
+            <h3>Recent Jobs</h3>
+            <a href="#">Live feed</a>
+          </div>
+          <div id="jobList" class="job-list"></div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">
+            <h3>Workers</h3>
+            <a href="#">Online</a>
+          </div>
+          <div id="workerList" class="worker-list"></div>
+        </div>
+      </section>
+
+      <div id="notice" class="notice"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

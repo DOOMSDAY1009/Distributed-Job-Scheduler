@@ -1,7 +1,13 @@
 # Distributed Background Job Processing System
 
 ## Self-Contained Submission Report
-This PDF is intended to serve as a complete submission package for the assignment. It includes the assignment context, the implemented solution, backend and frontend code excerpts, database design, testing evidence, and run instructions so that the work can be reviewed even without sharing the project zip file.
+This PDF is intended to serve as a complete submission package for the assignment. It includes the assignment context, the implemented solution, backend and frontend code excerpts, database design, testing evidence, run instructions, and repository/deployment links so that the work can be reviewed even without sharing the project zip file.
+
+**GitHub Repository:**
+https://github.com/DOOMSDAY1009/Distributed-Job-Scheduler
+
+**Deployment Instructions:**
+The project can be deployed to Render using the included render.yaml configuration. Visit https://render.com and connect this GitHub repository to automatically deploy on every push.
 
 ## 1. Assignment Summary
 The assignment required the development of a mini distributed background job processing system. The goal was to demonstrate how a queue-based service can receive jobs, route them through queues, process them using workers, handle retries and failures, and expose operational visibility through a dashboard.
@@ -332,5 +338,32 @@ pytest -q
 - docs/API_DOCS.md: API reference
 - docs/DESIGN_DECISIONS.md: design rationale
 
-## 15. Conclusion
-The project successfully implements a functional mini distributed background job processing system. It demonstrates queue-based job handling, worker execution, retry logic, dead-letter behavior, persistence, dashboard monitoring, testing, and documentation in a compact but complete form. This makes it suitable for assignment submission and easy to demonstrate in person.
+## 16. Repository and Deployment
+**GitHub Repository:**
+- https://github.com/DOOMSDAY1009/Distributed-Job-Scheduler
+
+**How to Deploy:**
+1. Visit https://render.com
+2. Sign in or create a free account
+3. Click "New +" and select "Web Service"
+4. Connect your GitHub account and select the Distributed-Job-Scheduler repository
+5. Configure with these settings:
+   - Environment: Python 3.11
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `cd backend && python -m uvicorn main:app --host 0.0.0.0 --port 8000`
+6. Click "Create Web Service"
+7. The application will be live at your Render URL (format: https://[service-name].onrender.com)
+
+**Running Locally:**
+- Backend: `python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000`
+- Frontend: `python -m http.server 8080`
+- Dashboard: http://127.0.0.1:8080
+
+**Alternative Deployment Platforms:**
+- Heroku: Use the provided Procfile configuration
+- Railway: Connect GitHub repository directly
+- DigitalOcean App Platform: Use render.yaml configuration
+
+
+## 17. Conclusion
+The project successfully implements a functional mini distributed background job processing system. It demonstrates queue-based job handling, worker execution, retry logic, dead-letter behavior, persistence, dashboard monitoring, testing, and documentation in a compact but complete form. The complete source code is available on GitHub and can be deployed to any cloud platform supporting Python applications. This makes it suitable for assignment submission and easy to demonstrate in person or online.

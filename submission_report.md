@@ -1,5 +1,8 @@
 # Distributed Background Job Processing System
 
+**Submitted By:** Nikhil Kumar Pillay  
+**Registration Number:** RA2311003011754
+
 ## Self-Contained Submission Report
 This report presents a complete mini distributed background job processing system built with FastAPI, SQLite, and a live dashboard frontend.
 
@@ -241,13 +244,10 @@ Dashboard:
 - Retry with exponential backoff: Demonstrates fault tolerance
 - Dead-letter state: Failed jobs are preserved for inspection
 
-## 10. Repository and Deployment
+## 10. GitHub Repository
 
 GitHub Repository:
 https://github.com/DOOMSDAY1009/Distributed-Job-Scheduler
-
-Deployed at:
-(Link will be updated after deployment)
 
 ## 11. Local Setup
 
@@ -276,6 +276,6 @@ Dashboard: http://127.0.0.1:8080
 - docs/DESIGN_DECISIONS.md: Design rationale
 - README.md: Project overview
 
-## Conclusion
+## 13. Conclusion
 
-This project demonstrates a functional distributed background job processing system with queue management, worker execution, reliability features, and real-time monitoring. The complete source code is available on GitHub and ready for deployment to any cloud platform supporting Python.
+This project demonstrates a functional distributed background job processing system with queue management, worker execution, reliability features, and real-time monitoring. The complete source code is available on GitHub.

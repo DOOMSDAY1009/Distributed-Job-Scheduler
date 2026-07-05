@@ -7,8 +7,8 @@ from reportlab.lib.units import inch
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, PageBreak, Preformatted
 
 ROOT = Path(__file__).resolve().parent.parent
-INPUT = ROOT / 'submission_report_full.md'
-OUTPUT = ROOT / 'submission_report_professional.pdf'
+INPUT = ROOT / 'submission_report.md'
+OUTPUT = ROOT / 'Report.pdf'
 
 styles = getSampleStyleSheet()
 styles.add(ParagraphStyle(name='TitleStyle', parent=styles['Title'], fontName='Helvetica-Bold', fontSize=22, leading=28, alignment=TA_CENTER, textColor=colors.HexColor('#0F3D5A')))
